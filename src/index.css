@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #f8fafc;
+    color: #1e293b;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+}
+
+/* Custom Ice and Brand utilities */
+.gradient-ice {
+  background: linear-gradient(135deg, #0265d2 0%, #0047ba 100%);
+}
+
+.gradient-topbar {
+  background: linear-gradient(90deg, #025fc7 0%, #0043b0 100%);
+}
+
+/* Fluid Card Animations */
+.card-hover {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 12px 28px -6px rgba(2, 101, 210, 0.15), 0 4px 12px -2px rgba(15, 23, 42, 0.05);
+}
+
+/* Reveal on scroll animations */
+[data-reveal], [data-reveal-group] > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+[data-reveal-state="visible"] {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Subtle pulse cue */
+@keyframes pulseSlow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.03); }
+}
+.pulse-cue {
+  animation: pulseSlow 3s infinite ease-in-out;
+}
